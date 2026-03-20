@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --font-heading: "Pacifico", cursive;
+  --font-script: "Dancing Script", cursive;
+  --font-sans: "Poppins", sans-serif;
+  
+  --color-navy: #0a0a2e;
+  --color-gold: #FFD700;
+  --color-purple: #9B59B6;
+  --color-tropical: #27AE60;
+  --color-cream: #FFFDD0;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-navy text-white font-sans overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .star {
+    @apply absolute bg-white rounded-full opacity-0;
+    animation: twinkle var(--duration) infinite ease-in-out;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-300;
+}
+
+.glass-card:hover {
+  @apply bg-white/10 border-white/20 -translate-y-2;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.nav-link {
+  @apply relative text-white/80 hover:text-gold transition-colors duration-300;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
